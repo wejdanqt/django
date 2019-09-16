@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <style>
+            .box{
+                width: 600px;
+            
+            }
+        </style>
+    </head>
+    <body>
+            
+        <h1>{{author.first_name}} {{author.last_name}}  </h1>
+        <label>ID: {{author.id}}</label><br><br>
+        <label>Notes:  </label>
+        <div class="box">
+        <p>{{author.notes}}</p>
+    </div>
+
+    <h1>Books:</h1>
+    <ul>
+    
+     {% for book in author_books %}
+    
+        <li> {{book.title}}</li>
+        {% endfor %}
+     
+    
+    </ul>
+
+ 
+<form action="/add_book/{{author.id}}" method="POST" >
+    {% csrf_token %}
+    <select  name = "add_book">
+         {% for book in books %}
+        <option value= {{book.id}}>{{book.title}}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" name="submit">
+</form> 
+
+    </body>
+</html>

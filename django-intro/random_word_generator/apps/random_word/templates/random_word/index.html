@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <style>
+      
+
+            form{
+                text-align: center;
+            }
+            
+
+        </style>
+    </head>
+    <body>
+        <form action="/" method="post">
+            {% csrf_token %}
+        <h2>Random Word (attempt # {{request.session.counter}})</h2>
+ 
+        <div class='random'>
+                {{request.session.random}}
+        </div><br>
+
+        <button type="submit">Generate</button>
+        </form>
+    </body>
+</html>

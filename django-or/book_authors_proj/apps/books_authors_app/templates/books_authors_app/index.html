@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>Books and Authors</title>
+        <style>
+            textarea{
+               resize: none;
+               height: 150px;
+               width: 500px;
+               overflow-y:scroll;
+           }
+           .myTable { 
+            width: 20%;
+            text-align: left;
+            background-color: lightgrey;
+            border-collapse: collapse; 
+            }
+            .myTable th { 
+            background-color: darkslategrey;
+            color: white; 
+            }
+            .myTable td, 
+            .myTable th { 
+            padding: 5px;
+            border: 1px solid darkslategrey; 
+            }
+
+            .container{
+                padding: 10px;
+                width: 900px;
+                min-height: 600px;
+                border: 1px solid black;
+                background: linear-gradient(135deg, rgba(192,208,179,1) 0%, rgba(77,92,64,1) 87%, rgba(77,92,64,1) 100%);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+        <form action="/add" method="POST">
+                {% csrf_token %}
+        <h1>Add a book</h1>
+        <b>Title:</b>
+        <input type="text" name="title"> <br><br>
+        <b>Description:</b> <br>
+        <textarea name ="dec"></textarea> <br> <br>
+        <input type="submit" name="submit">
+    </form>
+
+        <table class="myTable">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Action</th>
+            </tr>
+            {% for book in books %}
+            <tr>
+                <td>{{book.id}}</td>
+                <td>{{book.title}}</td>
+                <td><a href="/view/{{book.id}}">View</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+      </div>
+    </body>
+</html>
