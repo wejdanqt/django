@@ -1,0 +1,29 @@
+<html>
+    <head>
+            {% if messages %}
+            <script>
+             {% for message in messages %}
+                 alert("{{ message }}");
+             {% endfor %}
+            </script>
+         {% endif %}
+    </head>
+
+    <body>
+
+<form action="/upload_csv" method="POST" enctype="multipart/form-data"> 
+    {% csrf_token %}
+    <div>
+      <label for="name">File: </label>
+      <div>
+        <input type="file" name="csv_file" required="True">
+      </div>          
+    </div>
+    <div>          
+      <div style="margin-bottom:10px;">
+         <button> <span style="margin-right:5px;"></span>Upload </button>
+      </div> 
+    </div>
+    </form>
+    </body>
+</html>

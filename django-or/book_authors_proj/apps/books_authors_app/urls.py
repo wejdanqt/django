@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from . import views	# the . indicates that the views file can be found in the same directory as this file
+from . import views
                     
 urlpatterns = [
     url(r'^$', views.index),
